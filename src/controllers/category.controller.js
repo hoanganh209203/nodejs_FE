@@ -1,7 +1,7 @@
 import categoryModel from "../models/category.model.js";
 
 export function getCategory (req,res){
-    categoryModel.find().populate('products')
+    categoryModel.find()
     .then((data) => {
         res.json(data)
     })
@@ -15,7 +15,7 @@ export function getCategory (req,res){
 export function getCateById (req,res){
     const id = req.params.id
     if(id){
-        categoryModel.findById(id).populate('products')
+        categoryModel.findById(id)
         .then((data)=>{
             res.json(data)
         })
