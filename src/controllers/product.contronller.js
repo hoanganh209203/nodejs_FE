@@ -19,7 +19,18 @@ export const getProductByCategoryid = (req, res) => {
 
 export function index(req, res) {
     try {
-        const request = req.query.name
+        const page = req.query.page || 1;
+        const limit = req.query.limit || 10;
+        const skip = (page - 1) * limit;
+        const filter={}
+        if(req.query.title){
+            filter.title = {$regex : req.query.title}
+        }if(req.query.name){
+            filter.min = {$regex : req.query.min}
+        }if(req.query.name){
+            filter.max = {$regex : req.query.max}
+        }
+
         // Product.find({
         //    name: req.query.name 
         // })
@@ -28,7 +39,9 @@ export function index(req, res) {
         // }).catch(err => {
         //     res.json({message:"Có lỗi khi lấy dữ liệu"});
         // })
-        Product.find().populate("category")
+        Product.find(filter)
+        .skip(skip).limit(limit)
+        .populate("category")
             .then(data => {
                 res.json(data);
             })

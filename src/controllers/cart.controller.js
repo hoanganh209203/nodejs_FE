@@ -32,3 +32,25 @@ export const getCartByUserId = (req, res) => {
         res.json({ message: "Không nhận được id" })
     }
 }
+export const updateItem = async (req, res) => {
+    try {
+        const id = req.params.id
+        const cartNow = await cartModel.findById(id)
+        if(!cartNow) {
+            return res.status(400).json({message: "không tìm thấy giỏ hàng"})       
+        }
+        const data = req.body;
+        if(!data || data=={}){
+            return res.status(400).json({message: "không nhận được dữ liệu"});
+        }
+        cartNow.items = data.items;
+        await cartNow.save();
+        res.status(200).json({
+            message: "cập nhật thành công",
+            cartNow
+        })
+    } catch (error) {
+        res.status(500).json({message: err})
+    }
+   
+}
