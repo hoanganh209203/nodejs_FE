@@ -7,8 +7,8 @@ const router = express.Router();
 router.get('/', index);
 router.get('/', searchProduct);
 router.get('/:id', getById);
-router.post('/',checkAuth,insert);
-router.put('/:id',checkAuth,update );
-router.delete('/:id',checkAuth,remove);
+router.post('/',insert);
+router.put('/:id',update );
+router.delete('/:id',remove);
 router.get('/category/:id',getProductByCategoryid);
 export default router
