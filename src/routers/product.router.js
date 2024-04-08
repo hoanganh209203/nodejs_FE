@@ -1,6 +1,5 @@
 import express from 'express';
 import { getById, getProductByCategoryid, index, insert, remove, searchProduct, update } from '../controllers/product.contronller.js';
-import checkAuth from '../middleware/auth.js';
 
 const router = express.Router();
 
