@@ -12,7 +12,7 @@ function router(app){
     app.use('/user',userRouter)
     app.use('/auth',authRouter);
     app.use('/cart',routerCart);
-
+    
     app.use('/',routerCommon);
 }
 

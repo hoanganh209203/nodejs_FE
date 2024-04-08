@@ -1,5 +1,5 @@
 import express from 'express';
-import morgan from 'morgan';
+// import morgan from 'morgan';
 import path,{dirname} from 'path';
 // import mongoose from 'mongoose';
 import router from './src/routers/index.router.js';
@@ -21,9 +21,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 app.use(express.static(path.join(__dirname,'uploads')));
 app.use(cors())
-connect(URL_DB);
 
 router(app)
+connect(URL_DB);
 // mongoose.connect(URL_DB)
 //   .then(() => console.log('Connected!'));
 

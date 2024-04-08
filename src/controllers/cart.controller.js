@@ -32,6 +32,8 @@ export const getCartByUserId = (req, res) => {
         res.json({ message: "Không nhận được id" })
     }
 }
+
+
 export const updateItem = async (req, res) => {
     try {
         const id = req.params.id
